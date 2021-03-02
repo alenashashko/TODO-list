@@ -3,9 +3,12 @@ import './style.css';
 import React from "react";
 import ReactDom from "react-dom";
 
+import {TasksProvider} from "./lib/providers/TasksProvider";
 import {App} from "./App";
 
 ReactDom.render(
-  <App />,
+  <TasksProvider>
+    <App />
+  </TasksProvider>,
   document.querySelector(`#root`)
 );

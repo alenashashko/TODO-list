@@ -1,8 +1,9 @@
 import React, {useState, useCallback} from "react";
-import {nanoid} from "nanoid";
 
-export const NewTaskForm = (props) => {
-  const {onTaskCreation} = props;
+import {useTasksInfo} from "../../lib/providers/TasksProvider";
+
+export const NewTaskForm = () => {
+  const {createTask} = useTasksInfo();
 
   const [taskText, setTaskText] = useState("");
 
@@ -13,14 +14,10 @@ export const NewTaskForm = (props) => {
   const handleTaskCreation = useCallback((evt) => {
     evt.preventDefault();
 
-    onTaskCreation({
-      id: nanoid(),
-      date: Date.now(),
-      text: taskText
-    });
+    createTask(taskText);
 
     setTaskText("");
-  }, [onTaskCreation, taskText]);
+  }, [createTask, taskText]);
 
   return (
     <form className="new-task" onSubmit={handleTaskCreation}>

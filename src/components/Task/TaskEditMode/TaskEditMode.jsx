@@ -1,8 +1,11 @@
 import React, {useState, useCallback} from "react";
 
+import {useTasksInfo} from "../../../lib/providers/TasksProvider";
+
 export const TaskEditMode = (props) => {
-  const {task, onModeChange, onTaskChange} = props;
+  const {task, onFinish} = props;
   const {date, text, id} = task;
+  const {changeTask} = useTasksInfo();
 
   const [taskText, setTaskText] = useState(text);
 
@@ -11,13 +14,9 @@ export const TaskEditMode = (props) => {
   }, []);
 
   const handleSaveEditing = useCallback(() => {
-    onTaskChange(id, taskText);
-    onModeChange("view");
-  }, [onTaskChange, onModeChange, id, taskText]);
-
-  const handleCancelEditing = useCallback(() => {
-    onModeChange("view");
-  }, [onModeChange]);
+    changeTask(id, taskText);
+    onFinish();
+  }, [changeTask, onFinish, id, taskText]);
 
   return ( // блокировать кнопку save пока текст не изменен
     <div className="task-edit">
@@ -30,7 +29,7 @@ export const TaskEditMode = (props) => {
         onChange={handleTaskTextChange}
       />
       <button className="task-edit__save" onClick={handleSaveEditing}>Save</button>
-      <button className="task-edit__cancel" onClick={handleCancelEditing}>Cancel</button>
+      <button className="task-edit__cancel" onClick={onFinish}>Cancel</button>
     </div>
   );
 };

@@ -4,15 +4,19 @@ import {TaskViewMode} from "./TaskViewMode/TaskViewMode";
 import {TaskEditMode} from "./TaskEditMode/TaskEditMode";
 
 export const Task = (props) => {
-  const {task, onTaskDeletion, onTaskChange} = props;
+  const {task} = props;
 
   const [mode, setMode] = useState("view");
 
-  const handleModeChange = useCallback((mode) => {
-    setMode(mode);
+  const handleEditMode = useCallback(() => {
+    setMode("edit");
+  }, []);
+
+  const handleViewMode = useCallback(() => {
+    setMode("view");
   }, []);
 
   return mode === "view"
-    ? <TaskViewMode task={task} onTaskDeletion={onTaskDeletion} onModeChange={handleModeChange} />
-    : <TaskEditMode task={task} onModeChange={handleModeChange} onTaskChange={onTaskChange} />
+    ? <TaskViewMode task={task} onEditClick={handleEditMode} />
+    : <TaskEditMode task={task} onFinish={handleViewMode} />
 };
