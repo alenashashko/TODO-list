@@ -10,6 +10,18 @@ export const App = () => {
     setTasks([...tasks, newTask])
   }, [tasks]);
 
+  const handleTaskChange = useCallback((taskId, newText) => {
+    setTasks(tasks.map((task) => {
+      return task.id !== taskId
+        ? task
+        : {
+          ...task,
+          date: Date.now(),
+          text: newText
+        }
+    }))
+  }, [tasks]);
+
   const handleTaskDeletion = useCallback((taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   }, [tasks]);
@@ -18,7 +30,7 @@ export const App = () => {
     <Fragment>
       <NewTaskForm onTaskCreation={handleTaskCreation} />
 
-      <TaskList tasks={tasks} onTaskDeletion={handleTaskDeletion} />
+      <TaskList tasks={tasks} onTaskDeletion={handleTaskDeletion} onTaskChange={handleTaskChange} />
     </Fragment>
   );
 };
