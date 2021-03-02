@@ -2,3 +2,5 @@ node_modules
 
 # папка сборки
 public
+
+.DS_Store
