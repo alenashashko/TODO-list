@@ -3,9 +3,9 @@ import './style.css';
 import React from "react";
 import ReactDom from "react-dom";
 
-import {ExampleComponent} from "./ExampleComponent";
+import {App} from "./App";
 
 ReactDom.render(
-  <ExampleComponent />,
+  <App />,
   document.querySelector(`#root`)
 );
