@@ -1,13 +1,14 @@
-import React, {Fragment} from "react";
+import React from "react";
+import Container from "@material-ui/core/Container";
 
 import {NewTaskForm} from "./components/NewTaskForm/NewTaskForm";
 import {TaskList} from "./components/TaskList/TaskList";
 
 export const App = React.memo(() => {
   return (
-    <Fragment>
+    <Container maxWidth="sm">
       <NewTaskForm />
       <TaskList />
-    </Fragment>
+    </Container>
   );
 });

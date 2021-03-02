@@ -1,4 +1,8 @@
+import './TaskList.css';
+
 import React from "react";
+
+import Grid from '@material-ui/core/Grid';
 
 import {useTasksInfo} from "../../lib/providers/TasksProvider";
 import {Task} from "../Task/Task";
@@ -7,12 +11,12 @@ export const TaskList = () => {
   const {tasks} = useTasksInfo();
 
   return (
-    <ul className="tasks-list">
+    <Grid container spacing={3}>
       {tasks.map((task) =>
-        <li key={task.id} className="tasks-list__item">
+        <Grid key={task.id} item xs={12} sm={6}>
           <Task task={task} />
-        </li>
+        </Grid>
       )}
-    </ul>
+    </Grid>
   );
 };

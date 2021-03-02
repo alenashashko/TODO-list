@@ -1,0 +1,13 @@
+.new-task-form {
+  display: flex;
+}
+
+.new-task-form__text-wrap {
+  margin-right: 15px;
+
+  flex-grow: 1;
+}
+
+.new-task-form__text {
+  width: 100%;
+}
