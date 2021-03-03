@@ -1,8 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env) => {
     return {
@@ -16,12 +13,6 @@ module.exports = (env) => {
             open: true,
             port: 8080,
         },
-        optimization: {
-            minimizer: [
-              new TerserPlugin(),
-              new CssMinimizerPlugin(),
-            ]
-        },
         module: {
             rules: [
                 {
@@ -30,23 +21,13 @@ module.exports = (env) => {
                     use: {
                         loader: "babel-loader",
                     },
-                },
-                {
-                    test: /\.(css)$/i,
-                    use: [MiniCssExtractPlugin.loader, {
-                      loader: "css-loader",
-                      options: {
-                        url: false,
-                      }
-                    }],
-                },
+                }
             ],
         },
         resolve: {
             extensions: [".js", ".jsx"]
         },
         plugins: [
-            new MiniCssExtractPlugin(),
             new HtmlWebpackPlugin({
               template: "src/index.html",
               inject: "body",
