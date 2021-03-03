@@ -1,17 +1,24 @@
-import React, {useCallback} from "react";
+import React, { useCallback } from "react";
 
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+  IconButton,
+  Tooltip,
+  withStyles
+} from "@material-ui/core";
+import {Delete as DeleteIcon, Edit as EditIcon} from "@material-ui/icons";
 
 import {useTasksInfo} from "../../../lib/providers/TasksProvider";
 
-export const TaskViewMode = (props) => {
-  const {task, onEditClick} = props;
-  const {date, text, id} = task;
-  const {deleteTask} = useTasksInfo();
+import {styles} from "./TaskViewMode.styles";
+
+const TaskViewMode = (props) => {
+  const { task, onEditClick, classes } = props;
+  const { date, text, id } = task;
+  const { deleteTask } = useTasksInfo();
 
   const handleTaskDeletion = useCallback(() => {
     deleteTask(id);
@@ -20,17 +27,41 @@ export const TaskViewMode = (props) => {
   return (
     <Card>
       <CardContent>
-        <Typography color="textSecondary" gutterBottom>
-          {date}
-        </Typography>
-        <Typography variant="body1">
+        <Typography className={classes.text}>
           {text}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button className="task__edit" onClick={onEditClick} size="small">Edit</Button>
-        <Button className="task__delete" onClick={handleTaskDeletion} size="small">Delete</Button>
+        <div className={classes.footer}>
+          <Typography color="textSecondary">
+            {date}
+          </Typography>
+          <div className={classes.buttons}>
+            <Tooltip title="Edit" placement="top" arrow>
+              <IconButton
+                onClick={onEditClick}
+                color="primary"
+                size="small"
+                aria-label="edit task"
+              >
+                <EditIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete" placement="top" arrow>
+              <IconButton
+                onClick={handleTaskDeletion}
+                color="secondary"
+                size="small"
+                aria-label="delete task"
+              >
+                <DeleteIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
+          </div>
+        </div>
       </CardActions>
     </Card>
   );
 };
+
+export default withStyles(styles)(TaskViewMode);

@@ -1,14 +1,20 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
+import {Container, Grid} from "@material-ui/core";
 
-import {NewTaskForm} from "./components/NewTaskForm/NewTaskForm";
+import NewTaskForm from "./components/NewTaskForm/NewTaskForm";
 import {TaskList} from "./components/TaskList/TaskList";
 
 export const App = React.memo(() => {
   return (
     <Container maxWidth="sm">
-      <NewTaskForm />
-      <TaskList />
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <NewTaskForm/>
+        </Grid>
+        <Grid item xs={12}>
+          <TaskList />
+        </Grid>
+      </Grid>
     </Container>
   );
 });

@@ -1,22 +1,22 @@
 import React, {useState, useCallback} from "react";
 
-import {TaskViewMode} from "./TaskViewMode/TaskViewMode";
-import {TaskEditMode} from "./TaskEditMode/TaskEditMode";
+import TaskViewMode from "./TaskViewMode/TaskViewMode";
+import TaskEditMode from "./TaskEditMode/TaskEditMode";
 
 export const Task = (props) => {
   const {task} = props;
 
-  const [mode, setMode] = useState("view");
+  const [isViewMode, setIsViewMode] = useState(true);
 
   const handleEditMode = useCallback(() => {
-    setMode("edit");
+    setIsViewMode(false);
   }, []);
 
   const handleViewMode = useCallback(() => {
-    setMode("view");
+    setIsViewMode(true);
   }, []);
 
-  return mode === "view"
+  return isViewMode
     ? <TaskViewMode task={task} onEditClick={handleEditMode} />
     : <TaskEditMode task={task} onFinish={handleViewMode} />
 };

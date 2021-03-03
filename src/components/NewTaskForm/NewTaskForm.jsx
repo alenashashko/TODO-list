@@ -1,12 +1,13 @@
-import './NewTaskForm.css';
-
 import React, {useState, useCallback} from "react";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import {Card, CardContent, Button, TextField, Grid, withStyles, Typography} from "@material-ui/core";
 
 import {useTasksInfo} from "../../lib/providers/TasksProvider";
 
-export const NewTaskForm = () => {
+import {styles} from "./NewTaskForm.styles";
+
+const NewTaskForm = (props) => {
+  const {classes} = props;
+
   const {createTask} = useTasksInfo();
 
   const [taskText, setTaskText] = useState("");
@@ -24,27 +25,41 @@ export const NewTaskForm = () => {
   }, [createTask, taskText]);
 
   return (
-    <form className="new-task-form" onSubmit={handleTaskCreation}>
-      <div className="new-task-form__text-wrap">
-        <TextField
-          className="new-task-form__text"
-          name="task"
-          placeholder="Start typing your text here..."
-          multiline
-          rowsMax={10}
-          value={taskText}
-          onChange={handleTaskTextChange}
-        />
-      </div>
-      <Button
-        className="new-task-form__button"
-        type="submit"
-        size="small"
-        variant="contained"
-        color="primary"
-      >
-        Create task
-      </Button>
-    </form>
+    <Card>
+      <CardContent>
+        <Typography className={classes.title} variant="h5" component="h2">
+          Create new task
+        </Typography>
+        <form onSubmit={handleTaskCreation}>
+          <Grid container alignItems="flex-end" spacing={2}>
+            <Grid item xs={12} sm={9}>
+              <TextField
+                className={classes.stretch}
+                name="task"
+                placeholder="Start typing your text here..."
+                multiline
+                rowsMax={15}
+                value={taskText}
+                onChange={handleTaskTextChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <Button
+                className={classes.stretch}
+                type="submit"
+                size="small"
+                variant="contained"
+                color="primary"
+                disabled={taskText.length === 0}
+              >
+                Create task
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
+
+export default withStyles(styles)(NewTaskForm);
