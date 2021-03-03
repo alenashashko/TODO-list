@@ -1,7 +1,7 @@
-import React, {useContext, useState, useCallback, useMemo} from "react";
+import {createContext, useContext, useState, useCallback, useMemo} from "react";
 import {nanoid} from "nanoid";
 
-const TasksContext = React.createContext({
+const TasksContext = createContext({
   tasks: []
 });
 

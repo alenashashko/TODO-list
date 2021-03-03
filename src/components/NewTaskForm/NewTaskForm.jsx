@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import {useState, useCallback} from "react";
 import {Card, CardContent, Button, TextField, Grid, withStyles, Typography} from "@material-ui/core";
 
 import {useTasksInfo} from "../../lib/providers/TasksProvider";

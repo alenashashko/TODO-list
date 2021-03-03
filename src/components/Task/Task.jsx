@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import {useState, useCallback} from "react";
 
 import TaskViewMode from "./TaskViewMode/TaskViewMode";
 import TaskEditMode from "./TaskEditMode/TaskEditMode";
