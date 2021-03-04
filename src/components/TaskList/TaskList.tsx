@@ -7,9 +7,11 @@ import {Task} from "../Task/Task";
 export const TaskList: FC = () => {
   const {tasks} = useTasksInfo();
 
+  tasks.sort((a, b) => b.date - a.date);
+
   return (
     <Grid container spacing={3}>
-      {tasks.map((task:Task) =>
+      {tasks.sort().map((task:Task) =>
         <Grid key={task.id} item xs={12} sm={6}>
           <Task task={task} />
         </Grid>

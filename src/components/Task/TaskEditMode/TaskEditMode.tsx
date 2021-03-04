@@ -1,4 +1,5 @@
 import {FC, useState, useCallback, ChangeEvent} from "react";
+import dayjs from "dayjs";
 import {
   Card,
   CardActions,
@@ -41,7 +42,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
   return (
     <Card>
       <CardContent className={classes.content}>
-        <TextField className={classes.text} // отдельный компонент ?
+        <TextField className={classes.text}
           name="task"
           placeholder="Start typing your text here..."
           multiline
@@ -53,7 +54,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
       <CardActions>
         <div className={classes.footer}>
           <Typography color="textSecondary">
-            {date}
+            {dayjs(date).format(`YYYY-MM-DD HH:mm:ss`)}
           </Typography>
           <div className={classes.buttons}>
             <Tooltip title="Save" placement="top" arrow>

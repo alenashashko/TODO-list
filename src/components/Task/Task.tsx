@@ -5,7 +5,7 @@ import {TaskEditMode} from "./TaskEditMode/TaskEditMode";
 
 export interface Task {
   id: string;
-  date: string;
+  date: number;
   text: string;
 }
 

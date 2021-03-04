@@ -1,4 +1,5 @@
 import {FC, useCallback} from "react";
+import dayjs from "dayjs";
 
 import {
   Card,
@@ -41,7 +42,7 @@ export const TaskViewMode: FC<TaskViewModeProps> = (props) => {
       <CardActions>
         <div className={classes.footer}>
           <Typography color="textSecondary">
-            {date}
+            {dayjs(date).format(`YYYY-MM-DD HH:mm:ss`)}
           </Typography>
           <div className={classes.buttons}>
             <Tooltip title="Edit" placement="top" arrow>
