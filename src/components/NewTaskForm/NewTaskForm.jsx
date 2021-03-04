@@ -1,7 +1,7 @@
 import {useState, useCallback} from "react";
 import {Card, CardContent, Button, TextField, Grid, withStyles, Typography} from "@material-ui/core";
 
-import {useTasksInfo} from "../../lib/providers/TasksProvider";
+import {useTasksInfo} from "../../providers/TasksProvider";
 
 import {styles} from "./NewTaskForm.styles";
 

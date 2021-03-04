@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import {Save as SaveIcon, Cancel as CancelIcon} from "@material-ui/icons";
 
-import {useTasksInfo} from "../../../lib/providers/TasksProvider";
+import {useTasksInfo} from "../../../providers/TasksProvider";
 
 import {styles} from "./TaskEditMode.styles";
 

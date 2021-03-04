@@ -4,7 +4,7 @@ import {Container, Grid} from "@material-ui/core";
 import NewTaskForm from "./components/NewTaskForm/NewTaskForm";
 import {TaskList} from "./components/TaskList/TaskList";
 
-export const App = memo(() => {
+export const App = memo(function AppView() {
   return (
     <Container maxWidth="sm">
       <Grid container spacing={3}>

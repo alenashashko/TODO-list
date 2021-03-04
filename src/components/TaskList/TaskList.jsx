@@ -1,6 +1,6 @@
 import {Grid} from "@material-ui/core";
 
-import {useTasksInfo} from "../../lib/providers/TasksProvider";
+import {useTasksInfo} from "../../providers/TasksProvider";
 import {Task} from "../Task/Task";
 
 export const TaskList = () => {

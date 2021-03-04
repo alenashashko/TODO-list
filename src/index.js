@@ -1,6 +1,6 @@
 import ReactDom from "react-dom";
 
-import {TasksProvider} from "./lib/providers/TasksProvider";
+import {TasksProvider} from "./providers/TasksProvider";
 import {App} from "./App";
 
 ReactDom.render(
