@@ -1,9 +1,8 @@
 {
   "name": "todo-list",
   "scripts": {
-    "stylelint": "stylelint \"public//**/*.css\" --syntax css",
-    "eslint": "eslint --ext .jsx --ext .js src/",
-    "test": "npm run eslint && npm run stylelint",
+    "eslint": "eslint --ext .tsx --ext .ts src/**/*",
+    "test": "npm run eslint",
     "build": "rm -rf public && webpack --env mode=production",
     "start": "webpack serve --env mode=development"
   },
@@ -19,6 +18,8 @@
     "@material-ui/icons": "4.11.2",
     "@types/react": "17.0.2",
     "@types/react-dom": "17.0.1",
+    "@typescript-eslint/eslint-plugin": "4.16.1",
+    "@typescript-eslint/parser": "4.16.1",
     "babel-loader": "8.2.2",
     "clsx": "1.1.1",
     "eslint": "7.21.0",
