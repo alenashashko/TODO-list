@@ -1,4 +1,4 @@
-import {useCallback} from "react";
+import {FC, useCallback} from "react";
 
 import {
   Card,
@@ -6,19 +6,26 @@ import {
   CardContent,
   Typography,
   IconButton,
-  Tooltip,
-  withStyles
+  Tooltip
 } from "@material-ui/core";
 import {Delete as DeleteIcon, Edit as EditIcon} from "@material-ui/icons";
 
 import {useTasksInfo} from "../../../providers/TasksProvider";
+import {useStyles} from "./TaskViewMode.styles";
 
-import {styles} from "./TaskViewMode.styles";
+import {Task} from "../Task";
 
-const TaskViewMode = (props) => {
-  const { task, onEditClick, classes } = props;
-  const { date, text, id } = task;
-  const { deleteTask } = useTasksInfo();
+interface TaskViewModeProps {
+  task: Task;
+  onEditClick: () => void;
+}
+
+export const TaskViewMode: FC<TaskViewModeProps> = (props) => {
+  const {task, onEditClick} = props;
+  const {date, text, id} = task;
+
+  const {deleteTask} = useTasksInfo();
+  const classes = useStyles();
 
   const handleTaskDeletion = useCallback(() => {
     deleteTask(id);
@@ -63,5 +70,3 @@ const TaskViewMode = (props) => {
     </Card>
   );
 };
-
-export default withStyles(styles)(TaskViewMode);

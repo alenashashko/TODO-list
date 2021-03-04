@@ -1,22 +1,27 @@
-import {useState, useCallback} from "react";
-import {Card, CardContent, Button, TextField, Grid, withStyles, Typography} from "@material-ui/core";
+import {FC, useState, useCallback, FormEvent, ChangeEvent} from "react";
+import {
+  Card,
+  CardContent,
+  Button,
+  TextField,
+  Grid,
+  Typography
+} from "@material-ui/core";
 
 import {useTasksInfo} from "../../providers/TasksProvider";
+import {useStyles} from "./NewTaskForm.styles";
 
-import {styles} from "./NewTaskForm.styles";
-
-const NewTaskForm = (props) => {
-  const {classes} = props;
-
+export const NewTaskForm: FC = () => {
+  const classes = useStyles();
   const {createTask} = useTasksInfo();
 
-  const [taskText, setTaskText] = useState("");
+  const [taskText, setTaskText] = useState<string>("");
 
-  const handleTaskTextChange = useCallback((evt) => {
-    setTaskText(evt.target.value);
+  const handleTaskTextChange = useCallback((evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setTaskText((evt.target as HTMLInputElement).value);
   }, []);
 
-  const handleTaskCreation = useCallback((evt) => {
+  const handleTaskCreation = useCallback((evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
     createTask(taskText);
@@ -61,5 +66,3 @@ const NewTaskForm = (props) => {
     </Card>
   );
 };
-
-export default withStyles(styles)(NewTaskForm);
