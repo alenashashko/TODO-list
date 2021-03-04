@@ -1,6 +1,8 @@
 import {FC, createContext, useContext, useState, useCallback, useMemo} from "react";
 import {nanoid} from "nanoid";
-import { Task } from "components/Task/Task";
+import dayjs from "dayjs";
+
+import {Task} from "components/Task/Task";
 
 const TasksContext = createContext<{
   tasks: Task[];
@@ -32,7 +34,7 @@ export const TasksProvider: FC = (props) => {
   const createTask = useCallback((text: string) => {
     setTasks([...tasks, {
       id: nanoid(),
-      date: Date.now(),
+      date: dayjs(Date.now()).format(`YYYY-MM-DD HH:mm:ss`),
       text
     }])
   }, [tasks]);
@@ -43,7 +45,7 @@ export const TasksProvider: FC = (props) => {
         ? task
         : {
           ...task,
-          date: Date.now(),
+          date: dayjs(Date.now()).format(`YYYY-MM-DD HH:mm:ss`),
           text: newText
         }
     }))
