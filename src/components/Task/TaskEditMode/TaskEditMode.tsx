@@ -1,4 +1,4 @@
-import {useState, useCallback} from "react";
+import {FC, useState, useCallback} from "react";
 import {
   Card,
   CardActions,
@@ -11,18 +11,30 @@ import {
 } from "@material-ui/core";
 import {Save as SaveIcon, Cancel as CancelIcon} from "@material-ui/icons";
 
-import {useTasksInfo} from "../../../providers/TasksProvider";
+import {useTasksInfo} from "../../../lib/providers/TasksProvider";
+import {TaskInterface} from "../Task";
 
 import {styles} from "./TaskEditMode.styles";
 
-const TaskEditMode = (props) => {
+interface TaskEditModeProps {
+  task: TaskInterface;
+  onFinish: () => void; // ???
+  classes: {
+    content: object;
+    text: object;
+    footer: object;
+    buttons: object;
+  }; // ???
+}
+
+const TaskEditMode: FC<TaskEditModeProps> = (props) => {
   const {task, onFinish, classes} = props;
   const {date, text, id} = task;
   const {changeTask} = useTasksInfo();
 
-  const [taskText, setTaskText] = useState(text);
+  const [taskText, setTaskText] = useState(text); // ?
 
-  const handleTaskTextChange = useCallback((evt) => {
+  const handleTaskTextChange = useCallback((evt) => { // ?
     setTaskText(evt.target.value);
   }, []);
 

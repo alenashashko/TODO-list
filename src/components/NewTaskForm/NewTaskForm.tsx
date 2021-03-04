@@ -1,22 +1,37 @@
-import {useState, useCallback} from "react";
-import {Card, CardContent, Button, TextField, Grid, withStyles, Typography} from "@material-ui/core";
+import {FC, useState, useCallback} from "react";
+import {
+  Card,
+  CardContent,
+  Button,
+  TextField,
+  Grid,
+  withStyles,
+  Typography
+} from "@material-ui/core";
 
 import {useTasksInfo} from "../../providers/TasksProvider";
 
 import {styles} from "./NewTaskForm.styles";
 
-const NewTaskForm = (props) => {
+interface NewTaskFormProps {
+  classes: {
+    title: object;
+    stretch: object;
+  }
+}
+
+const NewTaskForm: FC<NewTaskFormProps> = (props) => {
   const {classes} = props;
 
   const {createTask} = useTasksInfo();
 
-  const [taskText, setTaskText] = useState("");
+  const [taskText, setTaskText] = useState(""); // ?
 
-  const handleTaskTextChange = useCallback((evt) => {
+  const handleTaskTextChange = useCallback((evt) => { // ?
     setTaskText(evt.target.value);
   }, []);
 
-  const handleTaskCreation = useCallback((evt) => {
+  const handleTaskCreation = useCallback((evt) => { // ?
     evt.preventDefault();
 
     createTask(taskText);
