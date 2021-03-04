@@ -11,7 +11,7 @@ export const TaskList: FC = () => {
 
   return (
     <Grid container spacing={3}>
-      {tasks.sort().map((task:Task) =>
+      {tasks.map((task:Task) =>
         <Grid key={task.id} item xs={12} sm={6}>
           <Task task={task} />
         </Grid>
