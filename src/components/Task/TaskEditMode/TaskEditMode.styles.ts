@@ -1,4 +1,6 @@
-export const styles = {
+import {makeStyles} from "@material-ui/core";
+
+export const useStyles = makeStyles({
   content: {
     paddingTop: "12px",
     paddingBottom: "12px"
@@ -24,4 +26,4 @@ export const styles = {
   buttons: {
     marginLeft: "auto"
   },
-};
+});

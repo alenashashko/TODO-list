@@ -1,4 +1,4 @@
-import {FC, useState, useCallback} from "react";
+import {FC, useState, useCallback, ChangeEvent} from "react";
 import {
   Card,
   CardActions,
@@ -6,36 +6,31 @@ import {
   Typography,
   TextField,
   IconButton,
-  Tooltip,
-  withStyles
+  Tooltip
 } from "@material-ui/core";
 import {Save as SaveIcon, Cancel as CancelIcon} from "@material-ui/icons";
 
-import {useTasksInfo} from "../../../lib/providers/TasksProvider";
-import {TaskInterface} from "../Task";
+import {useTasksInfo} from "../../../providers/TasksProvider";
+import {Task} from "../Task";
 
-import {styles} from "./TaskEditMode.styles";
+import {useStyles} from "./TaskEditMode.styles";
 
 interface TaskEditModeProps {
-  task: TaskInterface;
-  onFinish: () => void; // ???
-  classes: {
-    content: object;
-    text: object;
-    footer: object;
-    buttons: object;
-  }; // ???
+  task: Task;
+  onFinish: () => void;
 }
 
-const TaskEditMode: FC<TaskEditModeProps> = (props) => {
-  const {task, onFinish, classes} = props;
+export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
+  const {task, onFinish} = props;
   const {date, text, id} = task;
+
   const {changeTask} = useTasksInfo();
+  const classes = useStyles();
 
-  const [taskText, setTaskText] = useState(text); // ?
+  const [taskText, setTaskText] = useState<string>(text);
 
-  const handleTaskTextChange = useCallback((evt) => { // ?
-    setTaskText(evt.target.value);
+  const handleTaskTextChange = useCallback((evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setTaskText((evt.target as HTMLTextAreaElement).value);
   }, []);
 
   const handleSaveEditing = useCallback(() => {
@@ -46,7 +41,7 @@ const TaskEditMode: FC<TaskEditModeProps> = (props) => {
   return (
     <Card>
       <CardContent className={classes.content}>
-        <TextField className={classes.text}// отдельный компонент ?
+        <TextField className={classes.text} // отдельный компонент ?
           name="task"
           placeholder="Start typing your text here..."
           multiline
@@ -90,5 +85,3 @@ const TaskEditMode: FC<TaskEditModeProps> = (props) => {
     </Card>
   );
 };
-
-export default withStyles(styles)(TaskEditMode);

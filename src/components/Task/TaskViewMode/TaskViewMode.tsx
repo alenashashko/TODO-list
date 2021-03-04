@@ -6,31 +6,26 @@ import {
   CardContent,
   Typography,
   IconButton,
-  Tooltip,
-  withStyles
+  Tooltip
 } from "@material-ui/core";
 import {Delete as DeleteIcon, Edit as EditIcon} from "@material-ui/icons";
 
-import {useTasksInfo} from "../../../lib/providers/TasksProvider";
-import {TaskInterface} from "../Task";
+import {useTasksInfo} from "../../../providers/TasksProvider";
+import {useStyles} from "./TaskViewMode.styles";
 
-import {styles} from "./TaskViewMode.styles";
-
+import {Task} from "../Task";
 
 interface TaskViewModeProps {
-  task: TaskInterface;
-  onEditClick: () => void; // ???
-  classes: {
-    text: object;
-    footer: object;
-    buttons: object;
-  }; // ???
+  task: Task;
+  onEditClick: () => void;
 }
 
-const TaskViewMode: FC<TaskViewModeProps> = (props) => {
-  const {task, onEditClick, classes} = props;
+export const TaskViewMode: FC<TaskViewModeProps> = (props) => {
+  const {task, onEditClick} = props;
   const {date, text, id} = task;
+
   const {deleteTask} = useTasksInfo();
+  const classes = useStyles();
 
   const handleTaskDeletion = useCallback(() => {
     deleteTask(id);
@@ -41,7 +36,7 @@ const TaskViewMode: FC<TaskViewModeProps> = (props) => {
       <CardContent>
         <Typography className={classes.text}>
           {text}
-        </Typography>TaskEditModeProps
+        </Typography>
       </CardContent>
       <CardActions>
         <div className={classes.footer}>
@@ -75,5 +70,3 @@ const TaskViewMode: FC<TaskViewModeProps> = (props) => {
     </Card>
   );
 };
-
-export default withStyles(styles)(TaskViewMode);

@@ -1,22 +1,22 @@
 import {FC, useState, useCallback} from "react";
 
-import TaskViewMode from "./TaskViewMode/TaskViewMode";
-import TaskEditMode from "./TaskEditMode/TaskEditMode";
+import {TaskViewMode} from "./TaskViewMode/TaskViewMode";
+import {TaskEditMode} from "./TaskEditMode/TaskEditMode";
 
-export interface TaskInterface { // ?
-  id: number;
+export interface Task {
+  id: string;
   date: number;
   text: string;
 }
 
 interface TaskProps {
-  task: TaskInterface;
+  task: Task;
 }
 
 export const Task: FC<TaskProps> = (props) => {
   const {task} = props;
 
-  const [isViewMode, setIsViewMode] = useState(true); // как отметить тип boolean ?
+  const [isViewMode, setIsViewMode] = useState<boolean>(true);
 
   const handleEditMode = useCallback(() => {
     setIsViewMode(false);

@@ -5,7 +5,7 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 module.exports = (env) => {
   return {
     mode: env.mode,
-    entry: "./src/index.js",
+    entry: "./src/index.tsx",
     output: {
       filename: "bundle.js",
       path: path.resolve(__dirname, "public"),
