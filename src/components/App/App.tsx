@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { Container, Grid } from "@material-ui/core";
 
-import { Header } from "./components/Header/Header";
-import { NewTaskForm } from "./components/NewTaskForm/NewTaskForm";
-import { TaskList } from "./components/TaskList/TaskList";
-import { Footer } from "./components/Footer/Footer";
+import { Header } from "../Header/Header";
+import { NewTaskForm } from "../NewTaskForm/NewTaskForm";
+import { TaskList } from "../TaskList/TaskList";
+import { Footer } from "../Footer/Footer";
 
 import { useStyles } from "./App.styles";
 

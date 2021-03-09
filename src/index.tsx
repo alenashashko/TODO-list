@@ -2,7 +2,7 @@ import { render } from "react-dom";
 
 import { TasksProvider } from "./providers/TasksProvider";
 import { GlobalTheme } from "./components/GlobalTheme/GlobalTheme";
-import { App } from "./App";
+import { App } from "./components/App/App";
 
 render(
   <GlobalTheme>

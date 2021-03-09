@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -174,7 +174,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
@@ -182,15 +181,18 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,9 +239,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {FC, useState, useCallback, ChangeEvent} from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, useState, useCallback, ChangeEvent } from "react";
 import {
   Card,
   CardActions,
@@ -247,34 +247,36 @@ import {
   Typography,
   TextField,
   IconButton,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
-import {Save as SaveIcon, Cancel as CancelIcon} from "@material-ui/icons";
+import { Save as SaveIcon, Cancel as CancelIcon } from "@material-ui/icons";
 &nbsp;
-import {useTasksInfo} from "../../../providers/TasksProvider";
-import {Task} from "../Task";
+import { useTasksInfo } from "../../../providers/TasksProvider";
+import { Task } from "../Task";
 &nbsp;
-import {formatDate} from "../../../utils/dates";
+import { formatDate } from "../../../utils/dates";
 &nbsp;
-import {useStyles} from "./TaskEditMode.styles";
+import { useStyles } from "./TaskEditMode.styles";
 &nbsp;
 interface TaskEditModeProps {
   task: Task;
   onFinish: () =&gt; void;
 }
 &nbsp;
-export const TaskEditMode: FC&lt;TaskEditModeProps&gt; = (props) =&gt; {
-  const {task, onFinish} = props;
-  const {date, text, id} = task;
+export const TaskEditMode: FC&lt;TaskEditModeProps&gt; = ({ task, onFinish }) =&gt; {
+  const { date, text, id } = task;
 &nbsp;
-  const {changeTask} = useTasksInfo();
+  const { changeTask } = useTasksInfo();
   const classes = useStyles();
 &nbsp;
   const [taskText, setTaskText] = useState&lt;string&gt;(text);
 &nbsp;
-  const handleTaskTextChange = useCallback((evt: ChangeEvent&lt;HTMLInputElement | HTMLTextAreaElement&gt;) =&gt; {
-    setTaskText((evt.target as HTMLTextAreaElement).value);
-  }, []);
+  const handleTaskTextChange = useCallback(
+    (evt: ChangeEvent&lt;HTMLInputElement | HTMLTextAreaElement&gt;) =&gt; {
+      setTaskText((evt.target as HTMLTextAreaElement).value);
+    },
+    []
+  );
 &nbsp;
   const handleSaveEditing = useCallback(() =&gt; {
     changeTask(id, taskText);
@@ -295,9 +297,7 @@ export const TaskEditMode: FC&lt;TaskEditModeProps&gt; = (props) =&gt; {
       &lt;/CardContent&gt;
       &lt;CardActions className={classes.footer}&gt;
         &lt;div className={classes.footerContainer}&gt;
-          &lt;Typography color="textSecondary"&gt;
-            {formatDate(date)}
-          &lt;/Typography&gt;
+          &lt;Typography color="textSecondary"&gt;{formatDate(date)}&lt;/Typography&gt;
           &lt;div className={classes.buttons}&gt;
             &lt;Tooltip title="Save" placement="top" arrow&gt;
               &lt;span&gt;
@@ -309,7 +309,7 @@ export const TaskEditMode: FC&lt;TaskEditModeProps&gt; = (props) =&gt; {
                   aria-label="save changes"
                   disabled={taskText === text || taskText.length === 0}
                 &gt;
-                  &lt;SaveIcon fontSize="small"/&gt;
+                  &lt;SaveIcon fontSize="small" /&gt;
                 &lt;/IconButton&gt;
               &lt;/span&gt;
             &lt;/Tooltip&gt;
@@ -321,7 +321,7 @@ export const TaskEditMode: FC&lt;TaskEditModeProps&gt; = (props) =&gt; {
                 size="small"
                 aria-label="cancel changes"
               &gt;
-                &lt;CancelIcon fontSize="small"/&gt;
+                &lt;CancelIcon fontSize="small" /&gt;
               &lt;/IconButton&gt;
             &lt;/Tooltip&gt;
           &lt;/div&gt;
@@ -337,7 +337,7 @@ export const TaskEditMode: FC&lt;TaskEditModeProps&gt; = (props) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 09 2021 23:20:51 GMT+0300 (GMT+03:00)
+                at Wed Mar 10 2021 00:55:25 GMT+0300 (GMT+03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
