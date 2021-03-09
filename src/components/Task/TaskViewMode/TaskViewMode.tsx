@@ -47,6 +47,7 @@ export const TaskViewMode: FC<TaskViewModeProps> = (props) => {
           <div className={classes.buttons}>
             <Tooltip title="Edit" placement="top" arrow>
               <IconButton
+                data-testid="edit"
                 onClick={onEditClick}
                 color="primary"
                 size="small"
@@ -57,6 +58,7 @@ export const TaskViewMode: FC<TaskViewModeProps> = (props) => {
             </Tooltip>
             <Tooltip title="Delete" placement="top" arrow>
               <IconButton
+                data-testid="delete"
                 onClick={handleTaskDeletion}
                 color="secondary"
                 size="small"

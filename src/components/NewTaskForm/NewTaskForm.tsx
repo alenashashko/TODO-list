@@ -1,4 +1,4 @@
-import {FC, useState, useCallback, FormEvent, ChangeEvent} from "react";
+import React, { FC, useState, useCallback, ChangeEvent, FormEvent } from "react";
 import {
   Card,
   CardContent,
@@ -8,8 +8,8 @@ import {
   Typography
 } from "@material-ui/core";
 
-import {useTasksInfo} from "../../providers/TasksProvider";
-import {useStyles} from "./NewTaskForm.styles";
+import { useTasksInfo } from "../../providers/TasksProvider";
+import { useStyles } from "./NewTaskForm.styles";
 
 export const NewTaskForm: FC = () => {
   const classes = useStyles();
@@ -35,7 +35,7 @@ export const NewTaskForm: FC = () => {
         <Typography className={classes.title} variant="h5" component="h2">
           Create new task
         </Typography>
-        <form onSubmit={handleTaskCreation}>
+        <form data-testid="form" onSubmit={handleTaskCreation}>
           <Grid container alignItems="flex-end" spacing={2}>
             <Grid item xs={12} sm={9}>
               <TextField

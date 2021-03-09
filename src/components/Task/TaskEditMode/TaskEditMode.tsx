@@ -61,6 +61,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
             <Tooltip title="Save" placement="top" arrow>
               <span>
                 <IconButton
+                  data-testid="save"
                   onClick={handleSaveEditing}
                   color="primary"
                   size="small"
@@ -73,6 +74,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
             </Tooltip>
             <Tooltip title="Cancel" placement="top" arrow>
               <IconButton
+                data-testid="cancel"
                 onClick={onFinish}
                 color="secondary"
                 size="small"

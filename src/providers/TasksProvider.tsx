@@ -4,22 +4,17 @@ import {nanoid} from "nanoid";
 
 import {Task} from "components/Task/Task";
 
-const TasksContext = createContext<{
+export const TasksContext = createContext({} as {
   tasks: Task[];
   createTask: (text: string) => void;
   changeTask: (taskId: string, newText: string) => void;
   deleteTask: (taskId: string) => void;
-}>({
-  tasks: [],
-  createTask: () => {},
-  changeTask: () => {},
-  deleteTask: () => {},
 });
 
 export const useTasksInfo = () => {
   const value = useContext(TasksContext);
 
-  if (value === undefined) {
+  if (value.tasks === undefined) {
     throw new Error("you should use useTasksInfo inside of TasksProvider");
   }
 
@@ -28,7 +23,7 @@ export const useTasksInfo = () => {
 
 const TASKS_STORAGE_KEY = "tasks";
 
-const useLocalStorageTasks = () => {
+export const useLocalStorageTasks = () => {
   const [tasks] = useLocalStorage<Task[]>(TASKS_STORAGE_KEY, []);
 
   const setTasks = useCallback((newTasks: Task[]) => {
@@ -38,9 +33,7 @@ const useLocalStorageTasks = () => {
   return [tasks, setTasks] as const;
 }
 
-export const TasksProvider: FC = (props) => {
-  const {children} = props;
-
+export const useTasks = () => {
   const [tasks, setTasks] = useLocalStorageTasks();
 
   const createTask = useCallback((text: string) => {
@@ -66,6 +59,19 @@ export const TasksProvider: FC = (props) => {
   const deleteTask = useCallback((taskId: string) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   }, [tasks]);
+
+  return [
+    tasks,
+    createTask,
+    changeTask,
+    deleteTask,
+  ] as const;
+}
+
+export const TasksProvider: FC = (props) => {
+  const {children} = props;
+
+  const [tasks, createTask, changeTask, deleteTask] = useTasks();
 
   const value = useMemo(() => ({
     tasks,

@@ -1,10 +1,10 @@
-import ReactDom from "react-dom";
+import {render} from "react-dom";
 
-import {TasksProvider} from "./providers/TasksProvider";
-import {GlobalTheme} from "./components/GlobalTheme/GlobalTheme";
-import {App} from "./App";
+import { TasksProvider } from "./providers/TasksProvider";
+import { GlobalTheme } from "./components/GlobalTheme/GlobalTheme";
+import { App } from "./App";
 
-ReactDom.render(
+render(
   <GlobalTheme>
     <TasksProvider>
       <App />

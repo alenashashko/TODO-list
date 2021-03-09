@@ -11,12 +11,11 @@ export interface Task {
 
 interface TaskProps {
   task: Task;
+  initialIsViewMode?: boolean;
 }
 
-export const Task: FC<TaskProps> = (props) => {
-  const {task} = props;
-
-  const [isViewMode, setIsViewMode] = useState<boolean>(true);
+export const useIsViewMode = (initialValue = true) => {
+  const [isViewMode, setIsViewMode] = useState<boolean>(initialValue);
 
   const handleEditMode = useCallback(() => {
     setIsViewMode(false);
@@ -25,6 +24,14 @@ export const Task: FC<TaskProps> = (props) => {
   const handleViewMode = useCallback(() => {
     setIsViewMode(true);
   }, []);
+
+  return [isViewMode, handleViewMode, handleEditMode] as const;
+};
+
+export const Task: FC<TaskProps> = (props) => {
+  const {task, initialIsViewMode = true} = props;
+
+  const [isViewMode, handleViewMode, handleEditMode] = useIsViewMode(initialIsViewMode);
 
   return isViewMode
     ? <TaskViewMode task={task} onEditClick={handleEditMode} />
