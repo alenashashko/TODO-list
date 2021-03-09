@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = (env) => {
   return {
@@ -42,7 +43,14 @@ module.exports = (env) => {
           mode: "write-references",
         },
       }),
-    ],
+      env.mode === "production"
+        ? new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false,
+            reportFilename: path.resolve(__dirname, "reports", "bundle.html")
+          })
+        : null,
+    ].filter(Boolean),
     devtool: "source-map",
   };
 };
