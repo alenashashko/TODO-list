@@ -1,5 +1,5 @@
 import { render, cleanup } from "@testing-library/react";
-import { Header } from "./Header";
+import { Header } from "src/components/Header";
 
 afterEach(cleanup);
 

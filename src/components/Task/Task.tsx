@@ -1,7 +1,7 @@
 import { FC, useState, useCallback } from "react";
 
-import { TaskViewMode } from "./TaskViewMode/TaskViewMode";
-import { TaskEditMode } from "./TaskEditMode/TaskEditMode";
+import { TaskEditMode } from "src/components/Task/TaskEditMode";
+import { TaskViewMode } from "src/components/Task/TaskViewMode";
 
 export interface Task {
   id: string;

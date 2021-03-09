@@ -2,10 +2,10 @@ import { render, cleanup, fireEvent } from "@testing-library/react";
 
 import { TaskEditMode } from "./TaskEditMode";
 
-import { useTasksInfo } from "../../../providers/TasksProvider";
-import { taskMock, tasksContextValueMock } from "../../../tests/mocks/tasks";
+import { useTasksInfo } from "src/providers/TasksProvider";
+import { taskMock, tasksContextValueMock } from "src/tests/mocks/tasks";
 
-jest.mock("../../../providers/TasksProvider");
+jest.mock("src/providers/TasksProvider");
 
 afterEach(cleanup);
 

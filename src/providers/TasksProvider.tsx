@@ -2,7 +2,7 @@ import { FC, createContext, useContext, useCallback, useMemo } from "react";
 import { useLocalStorage, writeStorage } from "@rehooks/local-storage";
 import { nanoid } from "nanoid";
 
-import { Task } from "components/Task/Task";
+import { Task } from "src/components/Task";
 
 export const TasksContext = createContext(
   {} as {

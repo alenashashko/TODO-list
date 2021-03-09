@@ -1,5 +1,5 @@
 import { render, cleanup } from "@testing-library/react";
-import { Footer } from "./Footer";
+import { Footer } from "src/components/Footer";
 
 afterEach(cleanup);
 

@@ -14,7 +14,8 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { useTasksInfo } from "../../providers/TasksProvider";
+import { useTasksInfo } from "src/providers/TasksProvider";
+
 import { useStyles } from "./NewTaskForm.styles";
 
 export const NewTaskForm: FC = () => {
@@ -66,7 +67,7 @@ export const NewTaskForm: FC = () => {
                 size="small"
                 variant="contained"
                 color="primary"
-                disabled={taskText.length === 0}
+                disabled={taskText.trim().length === 0}
               >
                 Create task
               </Button>

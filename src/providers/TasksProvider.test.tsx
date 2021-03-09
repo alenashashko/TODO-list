@@ -6,8 +6,8 @@ import {
   useLocalStorageTasks,
   useTasks,
   useTasksInfo,
-} from "./TasksProvider";
-import { tasksContextValueMock, tasksMock } from "../tests/mocks/tasks";
+} from "src/providers/TasksProvider";
+import { tasksContextValueMock, tasksMock } from "src/tests/mocks/tasks";
 import { FC } from "react";
 
 afterEach(() => {

@@ -9,12 +9,11 @@ import {
 } from "@material-ui/core";
 import { Delete as DeleteIcon, Edit as EditIcon } from "@material-ui/icons";
 
-import { useTasksInfo } from "../../../providers/TasksProvider";
+import { useTasksInfo } from "src/providers/TasksProvider";
+import { formatDate } from "src/utils/dates";
+import { Task } from "src/components/Task/Task";
+
 import { useStyles } from "./TaskViewMode.styles";
-
-import { Task } from "../Task";
-
-import { formatDate } from "../../../utils/dates";
 
 interface TaskViewModeProps {
   task: Task;

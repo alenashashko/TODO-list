@@ -10,10 +10,9 @@ import {
 } from "@material-ui/core";
 import { Save as SaveIcon, Cancel as CancelIcon } from "@material-ui/icons";
 
-import { useTasksInfo } from "../../../providers/TasksProvider";
-import { Task } from "../Task";
-
-import { formatDate } from "../../../utils/dates";
+import { useTasksInfo } from "src/providers/TasksProvider";
+import { formatDate } from "src/utils/dates";
+import { Task } from "src/components/Task/Task";
 
 import { useStyles } from "./TaskEditMode.styles";
 
@@ -66,7 +65,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = ({ task, onFinish }) => {
                   color="primary"
                   size="small"
                   aria-label="save changes"
-                  disabled={taskText === text || taskText.length === 0}
+                  disabled={taskText === text || taskText.trim().length === 0}
                 >
                   <SaveIcon fontSize="small" />
                 </IconButton>

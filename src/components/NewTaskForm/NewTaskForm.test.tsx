@@ -2,10 +2,10 @@ import { render, cleanup, fireEvent } from "@testing-library/react";
 
 import { NewTaskForm } from "./NewTaskForm";
 
-import { useTasksInfo } from "../../providers/TasksProvider";
-import { tasksContextValueMock } from "../../tests/mocks/tasks";
+import { useTasksInfo } from "src/providers/TasksProvider";
+import { tasksContextValueMock } from "src/tests/mocks/tasks";
 
-jest.mock("../../providers/TasksProvider");
+jest.mock("src/providers/TasksProvider");
 
 afterEach(cleanup);
 

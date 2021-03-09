@@ -1,5 +1,5 @@
 import { render, cleanup } from "@testing-library/react";
-import { GlobalTheme } from "./GlobalTheme";
+import { GlobalTheme } from "src/components/GlobalTheme";
 
 afterEach(cleanup);
 

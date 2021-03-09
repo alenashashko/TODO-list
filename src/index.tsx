@@ -1,8 +1,8 @@
 import { render } from "react-dom";
 
-import { TasksProvider } from "./providers/TasksProvider";
-import { GlobalTheme } from "./components/GlobalTheme/GlobalTheme";
-import { App } from "./components/App/App";
+import { GlobalTheme } from "src/components/GlobalTheme";
+import { TasksProvider } from "src/providers/TasksProvider";
+import { App } from "src/components/App";
 
 render(
   <GlobalTheme>

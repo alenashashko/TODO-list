@@ -2,10 +2,10 @@ import { render, cleanup } from "@testing-library/react";
 
 import { TaskList } from "./TaskList";
 
-import { useTasksInfo } from "../../providers/TasksProvider";
-import { tasksMock } from "../../tests/mocks/tasks";
+import { useTasksInfo } from "src/providers/TasksProvider";
+import { tasksMock } from "src/tests/mocks/tasks";
 
-jest.mock("../../providers/TasksProvider");
+jest.mock("src/providers/TasksProvider");
 
 afterEach(cleanup);
 

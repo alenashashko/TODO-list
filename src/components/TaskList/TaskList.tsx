@@ -1,8 +1,8 @@
 import { FC, useMemo } from "react";
 import { Grid } from "@material-ui/core";
 
-import { useTasksInfo } from "../../providers/TasksProvider";
-import { Task } from "../Task/Task";
+import { useTasksInfo } from "src/providers/TasksProvider";
+import { Task } from "src/components/Task/Task";
 
 export const TaskList: FC = () => {
   const { tasks } = useTasksInfo();

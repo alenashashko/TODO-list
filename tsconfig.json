@@ -8,10 +8,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "strict": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "outDir": "./public",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "src/*": ["./src/*"],
+    }
   },
-  "include": ["./src"],
   "exclude": ["node_modules"]
 }

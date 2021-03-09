@@ -1,6 +1,6 @@
 import { render, cleanup } from "@testing-library/react";
-import { App } from "./App";
-import { TasksProvider } from "../../providers/TasksProvider";
+import { App } from "src/components/App";
+import { TasksProvider } from "src/providers/TasksProvider";
 
 afterEach(cleanup);
 

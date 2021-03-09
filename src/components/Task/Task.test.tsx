@@ -1,7 +1,7 @@
 import { render, cleanup, act } from "@testing-library/react";
 import { renderHook } from "@testing-library/react-hooks";
-import { TasksProvider } from "../../providers/TasksProvider";
-import { taskMock } from "../../tests/mocks/tasks";
+import { TasksProvider } from "src/providers/TasksProvider";
+import { taskMock } from "src/tests/mocks/tasks";
 
 import { Task, useIsViewMode } from "./Task";
 

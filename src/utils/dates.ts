@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import "dayjs/locale/ru";
 
-import { getUserLanguage } from "./getUserLanguage";
+import { getUserLanguage } from "src/utils/getUserLanguage";
 
 dayjs.extend(localizedFormat);
 
