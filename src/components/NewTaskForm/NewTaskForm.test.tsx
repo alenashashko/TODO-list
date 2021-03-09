@@ -1,8 +1,8 @@
-import {render, cleanup, fireEvent} from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import {NewTaskForm} from "./NewTaskForm";
+import { NewTaskForm } from "./NewTaskForm";
 
-import {useTasksInfo} from "../../providers/TasksProvider";
+import { useTasksInfo } from "../../providers/TasksProvider";
 import { tasksContextValueMock } from "../../tests/mocks/tasks";
 
 jest.mock("../../providers/TasksProvider");
@@ -10,17 +10,21 @@ jest.mock("../../providers/TasksProvider");
 afterEach(cleanup);
 
 it("renders new task form", () => {
-  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<typeof useTasksInfo>;
+  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<
+    typeof useTasksInfo
+  >;
 
   mockedUseTasksInfo.mockReturnValue(tasksContextValueMock);
 
-  const {asFragment} = render(<NewTaskForm />);
+  const { asFragment } = render(<NewTaskForm />);
 
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("should call createTask with correct text", () => {
-  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<typeof useTasksInfo>;
+  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<
+    typeof useTasksInfo
+  >;
 
   const mockedCreateTask = jest.fn();
 
@@ -29,14 +33,14 @@ it("should call createTask with correct text", () => {
     createTask: mockedCreateTask,
   });
 
-  const {getByPlaceholderText, getByTestId} = render(<NewTaskForm />);
+  const { getByPlaceholderText, getByTestId } = render(<NewTaskForm />);
 
   const input = getByPlaceholderText("Start typing your text here...");
   const testText = "Learn JavaScript";
 
   fireEvent.change(input, {
     target: {
-      value: testText
+      value: testText,
     },
   });
 

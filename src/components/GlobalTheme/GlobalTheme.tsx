@@ -1,9 +1,9 @@
-import {FC} from "react";
-import {createMuiTheme, ThemeProvider, CssBaseline} from "@material-ui/core";
+import { FC } from "react";
+import { createMuiTheme, ThemeProvider, CssBaseline } from "@material-ui/core";
 
 const fullHeight = {
   minHeight: "100%",
-  height: "100%"
+  height: "100%",
 };
 
 const theme = createMuiTheme({
@@ -18,11 +18,11 @@ const theme = createMuiTheme({
   },
 });
 
-export const GlobalTheme: FC = ({children}) => {
+export const GlobalTheme: FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        {children}
+      {children}
     </ThemeProvider>
   );
 };

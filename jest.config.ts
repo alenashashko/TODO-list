@@ -20,9 +20,7 @@ export default {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: [
-    "<rootDir>/src/**/*"
-  ],
+  collectCoverageFrom: ["<rootDir>/src/**/*"],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
@@ -31,16 +29,14 @@ export default {
   coveragePathIgnorePatterns: [
     "/node_modules/",
     "/__snapshots__/",
-    "/src/tests/"
+    "/src/tests/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-    "html"
-  ],
+  coverageReporters: ["html"],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,

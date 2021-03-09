@@ -22,11 +22,11 @@ module.exports = (env) => {
           use: {
             loader: "babel-loader",
           },
-        }
+        },
       ],
     },
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx"]
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -41,8 +41,8 @@ module.exports = (env) => {
           },
           mode: "write-references",
         },
-      })
+      }),
     ],
-    devtool: "source-map"
+    devtool: "source-map",
   };
 };

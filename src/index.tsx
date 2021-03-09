@@ -1,4 +1,4 @@
-import {render} from "react-dom";
+import { render } from "react-dom";
 
 import { TasksProvider } from "./providers/TasksProvider";
 import { GlobalTheme } from "./components/GlobalTheme/GlobalTheme";

@@ -1,15 +1,17 @@
-import {FC, createContext, useContext, useCallback, useMemo} from "react";
-import {useLocalStorage, writeStorage} from "@rehooks/local-storage";
-import {nanoid} from "nanoid";
+import { FC, createContext, useContext, useCallback, useMemo } from "react";
+import { useLocalStorage, writeStorage } from "@rehooks/local-storage";
+import { nanoid } from "nanoid";
 
-import {Task} from "components/Task/Task";
+import { Task } from "components/Task/Task";
 
-export const TasksContext = createContext({} as {
-  tasks: Task[];
-  createTask: (text: string) => void;
-  changeTask: (taskId: string, newText: string) => void;
-  deleteTask: (taskId: string) => void;
-});
+export const TasksContext = createContext(
+  {} as {
+    tasks: Task[];
+    createTask: (text: string) => void;
+    changeTask: (taskId: string, newText: string) => void;
+    deleteTask: (taskId: string) => void;
+  }
+);
 
 export const useTasksInfo = () => {
   const value = useContext(TasksContext);
@@ -31,54 +33,66 @@ export const useLocalStorageTasks = () => {
   }, []);
 
   return [tasks, setTasks] as const;
-}
+};
 
 export const useTasks = () => {
   const [tasks, setTasks] = useLocalStorageTasks();
 
-  const createTask = useCallback((text: string) => {
-    setTasks([...tasks, {
-      id: nanoid(),
-      date: Date.now(),
-      text
-    }])
-  }, [tasks]);
-
-  const changeTask = useCallback((taskId: string, newText: string) => {
-    setTasks(tasks.map((task) => {
-      return task.id !== taskId
-        ? task
-        : {
-          ...task,
+  const createTask = useCallback(
+    (text: string) => {
+      setTasks([
+        ...tasks,
+        {
+          id: nanoid(),
           date: Date.now(),
-          text: newText
-        }
-    }))
-  }, [tasks]);
+          text,
+        },
+      ]);
+    },
+    [tasks]
+  );
 
-  const deleteTask = useCallback((taskId: string) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
-  }, [tasks]);
+  const changeTask = useCallback(
+    (taskId: string, newText: string) => {
+      setTasks(
+        tasks.map((task) => {
+          return task.id !== taskId
+            ? task
+            : {
+                ...task,
+                date: Date.now(),
+                text: newText,
+              };
+        })
+      );
+    },
+    [tasks]
+  );
 
-  return [
-    tasks,
-    createTask,
-    changeTask,
-    deleteTask,
-  ] as const;
-}
+  const deleteTask = useCallback(
+    (taskId: string) => {
+      setTasks(tasks.filter((task) => task.id !== taskId));
+    },
+    [tasks]
+  );
 
-export const TasksProvider: FC = (props) => {
-  const {children} = props;
+  return [tasks, createTask, changeTask, deleteTask] as const;
+};
 
+export const TasksProvider: FC = ({ children }) => {
   const [tasks, createTask, changeTask, deleteTask] = useTasks();
 
-  const value = useMemo(() => ({
-    tasks,
-    createTask,
-    changeTask,
-    deleteTask
-  }), [tasks, createTask, changeTask, deleteTask]);
+  const value = useMemo(
+    () => ({
+      tasks,
+      createTask,
+      changeTask,
+      deleteTask,
+    }),
+    [tasks, createTask, changeTask, deleteTask]
+  );
 
-  return <TasksContext.Provider value={value}>{children}</TasksContext.Provider>;
+  return (
+    <TasksContext.Provider value={value}>{children}</TasksContext.Provider>
+  );
 };

@@ -1,12 +1,12 @@
-import {makeStyles} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles({
   footer: {
     backgroundColor: "#4050b5",
-    color: "#ffffff"
+    color: "#ffffff",
   },
   copyright: {
     textTransform: "uppercase",
-    textAlign: "right"
-  }
+    textAlign: "right",
+  },
 });

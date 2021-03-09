@@ -1,5 +1,5 @@
 import { render, cleanup, act } from "@testing-library/react";
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from "@testing-library/react-hooks";
 import { TasksProvider } from "../../providers/TasksProvider";
 import { taskMock } from "../../tests/mocks/tasks";
 
@@ -7,12 +7,13 @@ import { Task, useIsViewMode } from "./Task";
 
 afterEach(cleanup);
 
-describe('Task Component', () => {
+describe("Task Component", () => {
   it("renders task in view mode", () => {
     const { asFragment } = render(
       <TasksProvider>
         <Task task={taskMock} initialIsViewMode={true} />
-      </TasksProvider>);
+      </TasksProvider>
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -21,13 +22,14 @@ describe('Task Component', () => {
     const { asFragment } = render(
       <TasksProvider>
         <Task task={taskMock} initialIsViewMode={false} />
-      </TasksProvider>);
+      </TasksProvider>
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
 });
 
-describe('useIsViewMode hook', () => {
+describe("useIsViewMode hook", () => {
   it("should be true by default", () => {
     const { result } = renderHook(() => useIsViewMode());
 

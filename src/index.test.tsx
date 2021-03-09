@@ -1,9 +1,9 @@
-import {cleanup} from "@testing-library/react";
-import {render} from 'react-dom';
+import { cleanup } from "@testing-library/react";
+import { render } from "react-dom";
 
-import './index';
+import "./index";
 
-jest.mock('react-dom');
+jest.mock("react-dom");
 
 afterEach(cleanup);
 

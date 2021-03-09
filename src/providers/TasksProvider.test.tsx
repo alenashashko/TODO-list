@@ -1,8 +1,13 @@
-import {cleanup} from "@testing-library/react";
-import { renderHook } from '@testing-library/react-hooks';
+import { cleanup } from "@testing-library/react";
+import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-dom/test-utils";
-import { TasksContext, useLocalStorageTasks, useTasks, useTasksInfo } from "./TasksProvider";
-import { tasksContextValueMock, tasksMock } from '../tests/mocks/tasks';
+import {
+  TasksContext,
+  useLocalStorageTasks,
+  useTasks,
+  useTasksInfo,
+} from "./TasksProvider";
+import { tasksContextValueMock, tasksMock } from "../tests/mocks/tasks";
 import { FC } from "react";
 
 afterEach(() => {
@@ -11,8 +16,8 @@ afterEach(() => {
   localStorage.clear();
 });
 
-describe('useLocalStorageTasks hook', () => {
-  it('should be empty by default', () => {
+describe("useLocalStorageTasks hook", () => {
+  it("should be empty by default", () => {
     const { result } = renderHook(() => useLocalStorageTasks());
 
     const getCurrentTasksLength = () => result.current[0].length;
@@ -20,7 +25,7 @@ describe('useLocalStorageTasks hook', () => {
     expect(getCurrentTasksLength()).toBe(0);
   });
 
-  it('should set tasks correctly', () => {
+  it("should set tasks correctly", () => {
     const { result } = renderHook(() => useLocalStorageTasks());
 
     const getCurrentTasksLength = () => result.current[0].length;
@@ -37,11 +42,11 @@ describe('useLocalStorageTasks hook', () => {
   });
 });
 
-describe('useTasks hook', () => {
+describe("useTasks hook", () => {
   it("should create task correctly", () => {
     const { result } = renderHook(() => useTasks());
 
-    const testText = 'cool task';
+    const testText = "cool task";
 
     act(() => {
       const createTask = result.current[1];
@@ -58,8 +63,8 @@ describe('useTasks hook', () => {
   it("should change task text correctly", () => {
     const { result } = renderHook(() => useTasks());
 
-    const testInitialText = 'cool task';
-    const testChangedText = 'the coolest task';
+    const testInitialText = "cool task";
+    const testChangedText = "the coolest task";
 
     act(() => {
       const createTask = result.current[1];
@@ -85,8 +90,8 @@ describe('useTasks hook', () => {
   it("should not change anything if taskId doesn't exist", () => {
     const { result } = renderHook(() => useTasks());
 
-    const testInitialText = 'cool task';
-    const testChangedText = 'the coolest task';
+    const testInitialText = "cool task";
+    const testChangedText = "the coolest task";
 
     act(() => {
       const createTask = result.current[1];
@@ -95,7 +100,7 @@ describe('useTasks hook', () => {
     });
 
     act(() => {
-      const newTaskId = 'randomId';
+      const newTaskId = "randomId";
 
       const changeTask = result.current[2];
 
@@ -111,7 +116,7 @@ describe('useTasks hook', () => {
   it("should delete task correctly", () => {
     const { result } = renderHook(() => useTasks());
 
-    const testText = 'cool task';
+    const testText = "cool task";
 
     act(() => {
       const createTask = result.current[1];
@@ -134,17 +139,21 @@ describe('useTasks hook', () => {
   });
 });
 
-describe('useTasksInfo hook', () => {
-  it('should throw error when using outside of provider', () => {
+describe("useTasksInfo hook", () => {
+  it("should throw error when using outside of provider", () => {
     const { result } = renderHook(() => useTasksInfo());
 
-    expect(result.error).toEqual(Error('you should use useTasksInfo inside of TasksProvider'));
+    expect(result.error).toEqual(
+      Error("you should use useTasksInfo inside of TasksProvider")
+    );
   });
 
-  it('should return empty tasks list as initial state', () => {
+  it("should return empty tasks list as initial state", () => {
     // https://github.com/testing-library/react-hooks-testing-library/issues/23
     const wrapper: FC = ({ children }) => (
-      <TasksContext.Provider value={tasksContextValueMock}>{children}</TasksContext.Provider>
+      <TasksContext.Provider value={tasksContextValueMock}>
+        {children}
+      </TasksContext.Provider>
     );
 
     const { result } = renderHook(() => useTasksInfo(), { wrapper });

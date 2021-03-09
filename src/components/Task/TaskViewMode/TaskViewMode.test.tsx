@@ -1,8 +1,8 @@
-import {render, cleanup, fireEvent} from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
-import {TaskViewMode} from "./TaskViewMode";
+import { TaskViewMode } from "./TaskViewMode";
 
-import {useTasksInfo} from "../../../providers/TasksProvider";
+import { useTasksInfo } from "../../../providers/TasksProvider";
 import { taskMock, tasksContextValueMock } from "../../../tests/mocks/tasks";
 
 jest.mock("../../../providers/TasksProvider");
@@ -10,30 +10,31 @@ jest.mock("../../../providers/TasksProvider");
 afterEach(cleanup);
 
 it("renders task view mode", () => {
-  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<typeof useTasksInfo>;
+  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<
+    typeof useTasksInfo
+  >;
 
   mockedUseTasksInfo.mockReturnValue(tasksContextValueMock);
 
-  const {asFragment} = render(
-    <TaskViewMode
-      task={taskMock}
-      onEditClick={() => {}}
-    />);
+  const { asFragment } = render(
+    <TaskViewMode task={taskMock} onEditClick={() => {}} />
+  );
 
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("should call onEditClick", () => {
-  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<typeof useTasksInfo>;
+  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<
+    typeof useTasksInfo
+  >;
 
   mockedUseTasksInfo.mockReturnValue(tasksContextValueMock);
 
   const mockedEditTask = jest.fn();
 
-  const {getByTestId} = render(<TaskViewMode
-    task={taskMock}
-    onEditClick={mockedEditTask}
-  />);
+  const { getByTestId } = render(
+    <TaskViewMode task={taskMock} onEditClick={mockedEditTask} />
+  );
 
   const editButton = getByTestId("edit");
 
@@ -43,7 +44,9 @@ it("should call onEditClick", () => {
 });
 
 it("should call deleteTask with correct id", () => {
-  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<typeof useTasksInfo>;
+  const mockedUseTasksInfo = useTasksInfo as jest.MockedFunction<
+    typeof useTasksInfo
+  >;
 
   const mockedDeleteTask = jest.fn();
 
@@ -52,10 +55,9 @@ it("should call deleteTask with correct id", () => {
     deleteTask: mockedDeleteTask,
   });
 
-  const {getByTestId} = render(<TaskViewMode
-    task={taskMock}
-    onEditClick={() => {}}
-  />);
+  const { getByTestId } = render(
+    <TaskViewMode task={taskMock} onEditClick={() => {}} />
+  );
 
   const deleteButton = getByTestId("delete");
 

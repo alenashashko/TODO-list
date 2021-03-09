@@ -1,7 +1,7 @@
-import {FC} from "react";
-import {Toolbar, Typography} from "@material-ui/core";
+import { FC } from "react";
+import { Toolbar, Typography } from "@material-ui/core";
 
-import {useStyles} from "./Footer.styles";
+import { useStyles } from "./Footer.styles";
 
 export const Footer: FC = () => {
   const classes = useStyles();

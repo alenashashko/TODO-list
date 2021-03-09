@@ -1,4 +1,4 @@
-import {FC, useState, useCallback, ChangeEvent} from "react";
+import { FC, useState, useCallback, ChangeEvent } from "react";
 import {
   Card,
   CardActions,
@@ -6,34 +6,36 @@ import {
   Typography,
   TextField,
   IconButton,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
-import {Save as SaveIcon, Cancel as CancelIcon} from "@material-ui/icons";
+import { Save as SaveIcon, Cancel as CancelIcon } from "@material-ui/icons";
 
-import {useTasksInfo} from "../../../providers/TasksProvider";
-import {Task} from "../Task";
+import { useTasksInfo } from "../../../providers/TasksProvider";
+import { Task } from "../Task";
 
-import {formatDate} from "../../../utils/dates";
+import { formatDate } from "../../../utils/dates";
 
-import {useStyles} from "./TaskEditMode.styles";
+import { useStyles } from "./TaskEditMode.styles";
 
 interface TaskEditModeProps {
   task: Task;
   onFinish: () => void;
 }
 
-export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
-  const {task, onFinish} = props;
-  const {date, text, id} = task;
+export const TaskEditMode: FC<TaskEditModeProps> = ({ task, onFinish }) => {
+  const { date, text, id } = task;
 
-  const {changeTask} = useTasksInfo();
+  const { changeTask } = useTasksInfo();
   const classes = useStyles();
 
   const [taskText, setTaskText] = useState<string>(text);
 
-  const handleTaskTextChange = useCallback((evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setTaskText((evt.target as HTMLTextAreaElement).value);
-  }, []);
+  const handleTaskTextChange = useCallback(
+    (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setTaskText((evt.target as HTMLTextAreaElement).value);
+    },
+    []
+  );
 
   const handleSaveEditing = useCallback(() => {
     changeTask(id, taskText);
@@ -54,9 +56,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
       </CardContent>
       <CardActions className={classes.footer}>
         <div className={classes.footerContainer}>
-          <Typography color="textSecondary">
-            {formatDate(date)}
-          </Typography>
+          <Typography color="textSecondary">{formatDate(date)}</Typography>
           <div className={classes.buttons}>
             <Tooltip title="Save" placement="top" arrow>
               <span>
@@ -68,7 +68,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
                   aria-label="save changes"
                   disabled={taskText === text || taskText.length === 0}
                 >
-                  <SaveIcon fontSize="small"/>
+                  <SaveIcon fontSize="small" />
                 </IconButton>
               </span>
             </Tooltip>
@@ -80,7 +80,7 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
                 size="small"
                 aria-label="cancel changes"
               >
-                <CancelIcon fontSize="small"/>
+                <CancelIcon fontSize="small" />
               </IconButton>
             </Tooltip>
           </div>
