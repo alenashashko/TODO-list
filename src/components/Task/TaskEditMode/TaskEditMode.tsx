@@ -1,5 +1,4 @@
 import {FC, useState, useCallback, ChangeEvent} from "react";
-import dayjs from "dayjs";
 import {
   Card,
   CardActions,
@@ -13,6 +12,8 @@ import {Save as SaveIcon, Cancel as CancelIcon} from "@material-ui/icons";
 
 import {useTasksInfo} from "../../../providers/TasksProvider";
 import {Task} from "../Task";
+
+import {formatDate} from "../../../utils/dates";
 
 import {useStyles} from "./TaskEditMode.styles";
 
@@ -40,21 +41,21 @@ export const TaskEditMode: FC<TaskEditModeProps> = (props) => {
   }, [changeTask, onFinish, id, taskText]);
 
   return (
-    <Card>
+    <Card className={classes.task}>
       <CardContent className={classes.content}>
-        <TextField className={classes.text}
+        <TextField
+          className={classes.text}
           name="task"
           placeholder="Start typing your text here..."
           multiline
-          rowsMax={15}
           value={taskText}
           onChange={handleTaskTextChange}
         />
       </CardContent>
-      <CardActions>
-        <div className={classes.footer}>
+      <CardActions className={classes.footer}>
+        <div className={classes.footerContainer}>
           <Typography color="textSecondary">
-            {dayjs(date).format(`YYYY-MM-DD HH:mm:ss`)}
+            {formatDate(date)}
           </Typography>
           <div className={classes.buttons}>
             <Tooltip title="Save" placement="top" arrow>

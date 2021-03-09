@@ -1,6 +1,11 @@
 import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
+  task: {
+    display: "flex",
+    flexDirection: "column",
+    height: "100%"
+  },
   content: {
     paddingTop: "12px",
     paddingBottom: "12px"
@@ -17,6 +22,9 @@ export const useStyles = makeStyles({
     }
   },
   footer: {
+    marginTop: "auto"
+  },
+  footerContainer: {
     display: "flex",
     alignItems: "flex-end",
 
@@ -25,5 +33,5 @@ export const useStyles = makeStyles({
   },
   buttons: {
     marginLeft: "auto"
-  },
+  }
 });

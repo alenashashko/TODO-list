@@ -3,7 +3,6 @@
   "scripts": {
     "prepare": "husky install",
     "eslint": "eslint --ext .tsx --ext .ts src/**/*",
-    "test": "npm run eslint",
     "build": "rm -rf public && webpack --env mode=production",
     "start": "webpack serve --env mode=development"
   },

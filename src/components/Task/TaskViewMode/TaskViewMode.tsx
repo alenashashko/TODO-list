@@ -1,6 +1,4 @@
 import {FC, useCallback} from "react";
-import dayjs from "dayjs";
-
 import {
   Card,
   CardActions,
@@ -15,6 +13,8 @@ import {useTasksInfo} from "../../../providers/TasksProvider";
 import {useStyles} from "./TaskViewMode.styles";
 
 import {Task} from "../Task";
+
+import {formatDate} from "../../../utils/dates";
 
 interface TaskViewModeProps {
   task: Task;
@@ -33,16 +33,16 @@ export const TaskViewMode: FC<TaskViewModeProps> = (props) => {
   }, [deleteTask]);
 
   return (
-    <Card>
+    <Card className={classes.task}>
       <CardContent>
         <Typography className={classes.text}>
           {text}
         </Typography>
       </CardContent>
-      <CardActions>
-        <div className={classes.footer}>
+      <CardActions className={classes.footer}>
+        <div className={classes.footerContainer}>
           <Typography color="textSecondary">
-            {dayjs(date).format(`YYYY-MM-DD HH:mm:ss`)}
+            {formatDate(date)}
           </Typography>
           <div className={classes.buttons}>
             <Tooltip title="Edit" placement="top" arrow>

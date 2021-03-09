@@ -43,7 +43,6 @@ export const NewTaskForm: FC = () => {
                 name="task"
                 placeholder="Start typing your text here..."
                 multiline
-                rowsMax={15}
                 value={taskText}
                 onChange={handleTaskTextChange}
               />
