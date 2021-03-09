@@ -1,3 +1,5 @@
+import path from "path";
+
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/en/configuration.html
@@ -23,7 +25,7 @@ export default {
   collectCoverageFrom: ["<rootDir>/src/**/*"],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: "<rootDir>/reports/coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
@@ -96,7 +98,15 @@ export default {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  reporters: [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        outputPath: path.resolve(__dirname, "reports", "tests.html"),
+      },
+    ],
+  ],
 
   // Automatically reset mock state between every test
   // resetMocks: false,
