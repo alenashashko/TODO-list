@@ -22,7 +22,7 @@ exports[`renders app 1`] = `
       class="MuiContainer-root makeStyles-mainContainer-2 MuiContainer-maxWidthSm"
     >
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
       >
         <div
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
@@ -96,7 +96,7 @@ exports[`renders app 1`] = `
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
         >
           <div
-            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
           />
         </div>
       </div>

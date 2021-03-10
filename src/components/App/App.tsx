@@ -16,7 +16,7 @@ export const App = memo(function AppView() {
       <Header />
 
       <Container maxWidth="sm" className={classes.mainContainer}>
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           <Grid item xs={12}>
             <NewTaskForm />
           </Grid>

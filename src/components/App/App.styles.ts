@@ -1,15 +1,18 @@
-import { makeStyles } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
 
-export const useStyles = makeStyles({
-  wrap: {
-    display: "flex",
-    flexDirection: "column",
+export const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    wrap: {
+      display: "flex",
+      flexDirection: "column",
 
-    height: "100%",
-  },
-  mainContainer: {
-    flexGrow: 1,
+      height: "100%",
+    },
+    mainContainer: {
+      flexGrow: 1,
 
-    padding: "24px 0",
-  },
-});
+      paddingTop: `${theme.spacing(6)}px`,
+      paddingBottom: `${theme.spacing(6)}px`,
+    },
+  })
+);

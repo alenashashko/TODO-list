@@ -16,6 +16,7 @@ const theme = createMuiTheme({
       },
     },
   },
+  spacing: 4,
 });
 
 export const GlobalTheme: FC = ({ children }) => {

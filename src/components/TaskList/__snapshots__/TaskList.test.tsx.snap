@@ -3,7 +3,7 @@
 exports[`renders task list 1`] = `
 <DocumentFragment>
   <div
-    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
   >
     <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6"
