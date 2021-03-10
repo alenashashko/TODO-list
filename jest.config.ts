@@ -32,6 +32,8 @@ export default {
     "/node_modules/",
     "/__snapshots__/",
     "/src/tests/",
+    "/src/sw.js",
+    "/src/utils/registerSW.ts",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
