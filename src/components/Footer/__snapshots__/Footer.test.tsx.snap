@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders footer 1`] = `
+<DocumentFragment>
+  <footer
+    class="MuiToolbar-root MuiToolbar-regular makeStyles-footer-1 MuiToolbar-gutters"
+  >
+    <h2
+      class="MuiTypography-root makeStyles-copyright-2 MuiTypography-h6"
+    >
+      by Alena Shashko
+    </h2>
+  </footer>
+</DocumentFragment>
+`;

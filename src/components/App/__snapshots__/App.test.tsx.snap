@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders app 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-wrap-1"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <h1
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h6"
+        >
+          Todo List
+        </h1>
+      </div>
+    </header>
+    <div
+      class="MuiContainer-root makeStyles-mainContainer-2 MuiContainer-maxWidthSm"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardContent-root"
+            >
+              <h2
+                class="MuiTypography-root makeStyles-title-4 MuiTypography-h5"
+              >
+                Create new task
+              </h2>
+              <form
+                data-testid="form"
+              >
+                <div
+                  class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-align-items-xs-flex-end"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-9"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root makeStyles-stretch-5"
+                    >
+                      <div
+                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-multiline MuiInput-multiline"
+                      >
+                        <textarea
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline MuiInput-inputMultiline"
+                          name="task"
+                          placeholder="Start typing your text here..."
+                          rows="1"
+                          style="height: 0px; overflow: hidden;"
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiInput-input MuiInputBase-inputMultiline MuiInput-inputMultiline"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); width: 100%;"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-3"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-stretch-5 MuiButton-containedPrimary MuiButton-containedSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+                      disabled=""
+                      tabindex="-1"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Create task
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4"
+          />
+        </div>
+      </div>
+    </div>
+    <footer
+      class="MuiToolbar-root MuiToolbar-regular makeStyles-footer-6 MuiToolbar-gutters"
+    >
+      <h2
+        class="MuiTypography-root makeStyles-copyright-7 MuiTypography-h6"
+      >
+        by Alena Shashko
+      </h2>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
