@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = (env) => {
   return {
@@ -14,6 +15,7 @@ module.exports = (env) => {
     devServer: {
       open: true,
       port: 8080,
+      writeToDisk: true,
     },
     module: {
       rules: [
@@ -29,31 +31,40 @@ module.exports = (env) => {
     resolve: {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
       alias: {
-        src: path.resolve(__dirname, 'src'),
+        src: path.resolve(__dirname, "src"),
       },
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: "src/index.html",
-        inject: "body",
-      }),
-      new ForkTsCheckerWebpackPlugin({
-        typescript: {
-          diagnosticOptions: {
-            semantic: true,
-            syntactic: true,
+    plugins: [].concat(
+      [
+        new HtmlWebpackPlugin({
+          template: "src/index.html",
+          inject: "body",
+        }),
+        new ForkTsCheckerWebpackPlugin({
+          typescript: {
+            diagnosticOptions: {
+              semantic: true,
+              syntactic: true,
+            },
+            mode: "write-references",
           },
-          mode: "write-references",
-        },
-      }),
+        }),
+      ],
       env.mode === "production"
-        ? new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false,
-            reportFilename: path.resolve(__dirname, "reports", "bundle.html")
-          })
-        : null,
-    ].filter(Boolean),
+        ? [
+            new InjectManifest({
+              swSrc: path.resolve(__dirname, "./src/sw.js"),
+              swDest: "sw.js",
+            }),
+
+            new BundleAnalyzerPlugin({
+              analyzerMode: "static",
+              openAnalyzer: false,
+              reportFilename: path.resolve(__dirname, "reports", "bundle.html"),
+            }),
+          ]
+        : []
+    ),
     devtool: "source-map",
   };
 };

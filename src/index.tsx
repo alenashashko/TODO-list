@@ -12,3 +12,16 @@ render(
   </GlobalTheme>,
   document.querySelector(`#root`)
 );
+
+// https://developers.google.com/web/tools/workbox/modules/workbox-window
+async function checkForServiceWorker() {
+  if ("serviceWorker" in navigator) {
+    const { Workbox } = await import("workbox-window");
+
+    const wb = new Workbox("/sw.js");
+
+    wb.register();
+  }
+}
+
+checkForServiceWorker();
